@@ -1,0 +1,22 @@
+type UniqueConstraint<TTableColumns> = {
+  name: string;
+  columns: (keyof TTableColumns)[];
+};
+
+type PrimaryKeyConstraint<TTableColumns> = {
+  name: string;
+  columns: (keyof TTableColumns)[];
+};
+
+type ForeignKeyConstraint<TTableColumns> = {
+  name: string;
+  columns: (keyof TTableColumns)[];
+  referencedTable: string;
+  referencedColumns: string[];
+};
+
+type DefaultConstraint<TTableColumns> = {
+  name: string;
+  columns: (keyof TTableColumns)[];
+  value: string;
+};
