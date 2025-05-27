@@ -8,11 +8,22 @@ export class DataType {
   /** @private @type {boolean} */
   _nullable = true;
 
-  /** @private */
-  constructor() {}
+  /**
+   * @private
+   * @param {string} name
+   * @param {number|null} length
+   *
+   */
+  constructor(name, length = null) {
+    if (length && length <= 0)
+      throw new Error("La longitud debe ser mayor a 0.");
+    this._name = name;
+    this._length = length;
+  }
 
   notNull() {
     this._nullable = false;
+    return this;
   }
 
   /**
@@ -33,19 +44,13 @@ export class DataType {
   }
 
   static INTEGER() {
-    const t = new DataType();
-    t._name = "INTEGER";
-    return t;
+    return new DataType("INTEGER");
   }
 
   /**
    * @param {number} length
    */
   static VARCHAR(length) {
-    const t = new DataType();
-    t._name = "VARCHAR";
-    t._length = length;
-
-    return t;
+    return new DataType("VARCHAR", length);
   }
 }
