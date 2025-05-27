@@ -1,7 +1,7 @@
 {
-  "name": "node-js-library-template",
+  "name": "tsql-qb",
   "version": "1.0.0",
-  "description": "Plantilla para crear librerías de Node.js",
+  "description": "Herramienta para generar consultas T-SQL.",
   "main": "index.js",
   "type": "module",
   "scripts": {
