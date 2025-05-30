@@ -30,4 +30,8 @@ type DataTypeName =
   | "BIGINT"
   | "BIT"
   | "NUMERIC"
-  | "DECIMAL";
+  | "DECIMAL"
+  | "DATE"
+  | "DATETIME"
+  | "FLOAT"
+  | "REAL";

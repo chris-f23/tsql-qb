@@ -18,9 +18,24 @@ export class DataType {
    * @param {number|null} precision
    * @param {number|null} scale
    */
-  constructor(name, length = null, precision = null, scale = null) {
-    if (length !== null && length <= 0)
-      throw new Error("La longitud debe ser mayor a 0.");
+  constructor(
+    name,
+    length = null,
+    precision = null,
+    scale = null,
+  ) {
+    if (length !== null) {
+      if (name === "FLOAT") {
+        if (length > 53)
+          throw new Error("La longitud debe ser menor o igual a 53.");
+        if (length < 1)
+          throw new Error("La longitud debe ser mayor o igual a 1.");
+      } else if (name === "VARCHAR") {
+        if (length <= 0) throw new Error("La longitud debe ser mayor a 0.");
+      }
+
+      this._length = length;
+    }
 
     if (
       (precision === null && scale !== null) ||
@@ -42,13 +57,12 @@ export class DataType {
 
       if (scale > precision)
         throw new Error("La escala debe ser menor o igual a la precision.");
+
+      this._precision = precision;
+      this._scale = scale;
     }
 
-    this._precision = precision;
-    this._scale = scale;
-
     this._name = name;
-    this._length = length;
   }
 
   /**
@@ -127,5 +141,28 @@ export class DataType {
    */
   static DECIMAL(precision = 18, scale = 0) {
     return new DataType("DECIMAL", null, precision, scale);
+  }
+
+  static DATE() {
+    return new DataType("DATE");
+  }
+
+  static DATETIME() {
+    return new DataType("DATETIME");
+  }
+
+  /**
+   * Crea un tipo de dato FLOAT.
+   * @param {number} n
+   */
+  static FLOAT(n = 53) {
+    return new DataType("FLOAT", n);
+  }
+
+  /**
+   * Crea un tipo de dato REAL (identico a FLOAT(24)).
+   */
+  static REAL() {
+    return new DataType("REAL");
   }
 }
