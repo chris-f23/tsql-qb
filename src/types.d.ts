@@ -20,3 +20,14 @@ type DefaultConstraint<TTableColumns> = {
   columns: (keyof TTableColumns)[];
   value: string;
 };
+
+type DataTypeName =
+  | "INTEGER"
+  | "VARCHAR"
+  | "TINYINT"
+  | "SMALLINT"
+  | "INT"
+  | "BIGINT"
+  | "BIT"
+  | "NUMERIC"
+  | "DECIMAL";

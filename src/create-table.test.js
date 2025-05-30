@@ -4,20 +4,21 @@ import { DataType } from "./data-types";
 
 function crearTablaPersona() {
   return createTable("Persona", {
-    Id: DataType.INTEGER(),
+    Id: DataType.INT(),
     Nombre: DataType.VARCHAR(20),
     ApellidoPaterno: DataType.VARCHAR(50),
     ApellidoMaterno: DataType.VARCHAR(50),
     RUT: DataType.VARCHAR(10),
   });
 }
+
 describe("Módulo create-table", () => {
-  it("Debe crear la tabla Persona, con sus columnas siendo un id, nombre, apellido paterno, apellido materno y rut.", () => {
+  it("Debe crear la tabla Persona, con sus columnas id, nombre, apellido paterno, apellido materno y rut.", () => {
     const statement = crearTablaPersona().build();
 
     expect(statement).toBe(
       "CREATE TABLE [Persona] (" +
-        "[Id] [INTEGER], " +
+        "[Id] [INT], " +
         "[Nombre] [VARCHAR](20), " +
         "[ApellidoPaterno] [VARCHAR](50), " +
         "[ApellidoMaterno] [VARCHAR](50), " +
@@ -33,7 +34,7 @@ describe("Módulo create-table", () => {
 
     expect(statement).toBe(
       "CREATE TABLE [Persona] (" +
-        "[Id] [INTEGER], " +
+        "[Id] [INT], " +
         "[Nombre] [VARCHAR](20), " +
         "[ApellidoPaterno] [VARCHAR](50), " +
         "[ApellidoMaterno] [VARCHAR](50), " +
@@ -50,7 +51,7 @@ describe("Módulo create-table", () => {
 
     expect(statement).toBe(
       "CREATE TABLE [Persona] (" +
-        "[Id] [INTEGER], " +
+        "[Id] [INT], " +
         "[Nombre] [VARCHAR](20), " +
         "[ApellidoPaterno] [VARCHAR](50), " +
         "[ApellidoMaterno] [VARCHAR](50), " +
@@ -67,7 +68,7 @@ describe("Módulo create-table", () => {
 
     expect(statement).toBe(
       "CREATE TABLE [Persona] (" +
-        "[Id] [INTEGER], " +
+        "[Id] [INT], " +
         "[Nombre] [VARCHAR](20), " +
         "[ApellidoPaterno] [VARCHAR](50), " +
         "[ApellidoMaterno] [VARCHAR](50), " +
