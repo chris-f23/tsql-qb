@@ -21,6 +21,11 @@ type DefaultConstraint<TTableColumns> = {
   value: string;
 };
 
+type InlineColumnConstraint = {
+  name?: string;
+  type: "UNIQUE" | "PRIMARY_KEY" | "DEFAULT";
+};
+
 type DataTypeName =
   | "INTEGER"
   | "VARCHAR"
